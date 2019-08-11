@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Disclose or Exploit? A Game Theoretic Approach to Strategic Decision Making in Cyber Warfare</title>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+  <link href="css/frame.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/controls.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/custom.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    .menu-overview {
+      color: rgb(255, 255, 255) !important;
+      opacity: 1 !important;
+      font-weight: 700 !important;
+    }
+  </style>
+  <script>
+    function showPage() {
+      var sel = document.getElementById('dropdown');
+      var option = sel.options[sel.selectedIndex].value;
+      if (option != '') {
+        window.location.replace(option + "_param.html");
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="menu-container"></div>
+  <div class="content-container">
+    <div class="content">
+      <div class="content-table flex-column">
+        
+        <div class="flex-row">
+            <div class="flex-item flex-column">
+              <p class="text add-top-margin"> <font size="+3"> <strong>
+                  Disclose or Exploit? </strong><br> <font size="+2">A Game Theoretic Approach to Strategic Decision Making in Cyber Warfare </font> <br><br>
+                  </font> 
+                  <center><h2>Welcome! Please choose a vulnerability or register a new vulnerability</h2> </center>
+                  
+              </p>
+            </div>
+        </div>
+
+        <div align="center">
+         <select id = "dropdown" style="font-size:20px;"> 
+            <option value="" selected disabled hidden>Select / Upload a sample vulnerability</option>
+            <option value = "CVE-2018-15982">CVE-2018-15982</option>
+            <option value = "">CVE-2018-8453 </option>
+            <option value = "">CVE-2018-4878</option>
+            <option value = "Upload">Upload</option>
+         </select>
+         <input class="button button4" type="button" value="Submit" onclick="showPage()"  style="font-size:18px; " />
+        </div>
+
+        <div class="flex-row">
+          <div class="flex-item flex-column">
+            <br>
+            <div id="myDiv"></div>
+            <div id="tester" style="width:850px;height:600px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/plotly.js"></script>
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Disclose or Exploit? A Game Theoretic Approach to Strategic Decision Making in Cyber Warfare</title>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+  <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/frame.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/controls.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/widgets.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/custom.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/widgets.js"></script>
+  <script src="js/custom.js"></script>
+  <style>
+    .menu-comments {
+      color: rgb(255, 255, 255) !important;
+      opacity: 1 !important;
+      font-weight: 700 !important;
+    }
+    table, th, td {
+            border: 1px solid black;
+         }
+  </style>
+</head>
+
+<body>
+  <div class="menu-container"></div>
+  <div class="content-container">
+    <div class="content">
+      <div class="content-table flex-column">
+        <div class="flex-row">
+          <div class="flex-item flex-column">
+            <p class="text add-top-margin">
+            <font size="+3"> <strong>
+                Internal Discussion of the Vulnerabilities</strong></font> 
+            </font>  
+            </p>
+          </div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item flex-column">
+            <div align="center">
+                <select name = "dropdown"> 
+                   <option value = "Choose a sample vulnerability" > Choose a sample vulnerability to check the internal discussion</option>
+                   <option value = "Hjn947hcd92">Hjn947hcd92 </option>
+                   <option value = "E12e97vxfu10">E12e97vxfu10</option>
+                   <option value = "Nckjhdf9274r6">Nckjhdf9274r6</option>
+                </select>
+                <button onclick="window.location.href = 'http://127.0.0.1:5500/parameters.html';">Check</button>
+                <br><br><br>
+            </div>
+
+            <h3>Real-time discussion</h3>
+            <div>
+              <form action="/html/tags/html_form_tag_action.cfm" method="post">
+                <div>
+                <textarea rows="4" cols="50" name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;">Chad: This vulnerability could let hackers see who you contact when using the software. 
+                  &#13;&#10;Greg: Also, it can steal your personal bank login credentials
+                </textarea>
+                </div>
+                
+              </form>
+              <br>
+
+              <h3>Submit your comments on the selected vulnerability</h3>
+              <form action="/html/tags/html_form_tag_action.cfm" method="post">
+                <div>
+                <textarea rows="4" cols="50" name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;">
+                </textarea>
+                </div>
+                <button onclick="window.location.href = 'http://127.0.0.1:5500/comments.html';">Submit</button>
+              </form>
+              <br>
+
+              <h3>Severity and RCWG's Parameter Prediction</h3>
+              <table>
+                <tr align="left">
+                    <th>Vulnerability ID</th>
+                    <th>CVSS score</sub></th>
+                    <th>t<sub>disco</sub></th>
+                    <th>t<sub>dev</sub></th>
+                    <th>c<sub>dev</sub></th>
+                    <th>r<sub>disclose</sub></th>
+                </tr>
+                <tr > 
+                    <td>Hjn947hcd92</td>
+                    <td>7.8</td>
+                    <td>40*N(2,5)</td>
+                    <td>30*N(2,6)</td>
+                    <td>40*N(2,7)</td>
+                    <td>50*N(2,8)</td>
+                </tr>
+
+                
+              </table>
+              <br>
+
+              <h3>Details of the selected vulnerability</h3>
+              <form action="/html/tags/html_form_tag_action.cfm" method="post">
+                <div>
+                <textarea rows="4" cols="50" name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;">In Emerson Ovation OCR400 Controller 3.3.1 and earlier, a heap-based buffer overflow vulnerability in the embedded third-party FTP server involves improper handling of a long command to the FTP service, which may cause memory corruption that halts the controller or leads to remote code execution and escalation of privileges.
+                </textarea>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+        
+    </div>
+  </div>
+
+</body>
+
+</html>

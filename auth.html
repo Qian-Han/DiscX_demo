@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Disclose or Exploit? A Game Theoretic Approach to Strategic Decision Making in Cyber Warfare</title>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+  <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/frame.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/controls.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/widgets.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/custom.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="js/menu_authentication.js"></script>
+  <script src="js/widgets.js"></script>
+  <script src="js/custom.js"></script>
+
+  <script>
+        function login() {
+            var username = document.getElementById("username");
+            var pass = document.getElementById("password");
+            if (username.value == "") {
+                alert("Please Input Your Username");
+            } else if (pass.value  == "") {
+                alert("Please Input Your Password");
+            } else if(username.value == "admin" && pass.value == "123456"){
+                window.location.replace("index.html");
+            } else {
+                alert("Authentication Failed")
+            }
+        }
+        </script>
+
+  <style>
+        .menu-comments {
+          color: rgb(255, 255, 255) !important;
+          opacity: 1 !important;
+          font-weight: 700 !important;
+        }
+        table, th, td {
+                border: 1px solid black;
+             }
+      </style>
+    </head>
+    
+    <body>
+      <div class="menu-container"></div>
+      <div class="content-container">
+            <div class="content">
+              <div class="content-table flex-column">
+                <div class="flex-row">
+                  <div class="flex-item flex-column">
+                    <p class="text add-top-margin">
+                    <font size="+3"> <strong>
+                      DiscX Authentication</strong></font> 
+                    </font>  
+                    </p>
+                  </div>
+                </div>
+                <div class="flex-row">
+                <div class="flex-item flex-column">
+                    <p><label class="label_input"><font size="+2">
+                            Username</font> 
+                          </font>   &nbsp; </label><input type="text" id="username" class="text_field"/></p> 
+                    <p><label class="label_input"><font size="+2">
+                            Password</font> 
+                          </font>   &nbsp; &nbsp; </label><input type="text" id="password" class="text_field"/></p>
+                    <br>
+                    <button class="button button4" onclick="login()">Log In</button>
+    </body>
+</html>

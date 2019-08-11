@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Disclose or Exploit? A Game Theoretic Approach to Strategic Decision Making in Cyber Warfare</title>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+  <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/frame.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/controls.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/widgets.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/custom.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/widgets.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script>
+    function gotoHomePage() {
+      alert("Thanks for your submission");
+      window.location.replace("index.html");
+    }
+  </script>
+  <style>
+    .menu-widget {
+      color: rgb(255, 255, 255) !important;
+      opacity: 1 !important;
+      font-weight: 700 !important;
+    }
+    table, th, td {
+            border: 1px solid black;
+         }
+  </style>
+</head>
+
+<body>
+  <div class="menu-container"></div>
+  <div class="content-container">
+    <div class="content">
+      <div class="content-table flex-column">
+        <div class="flex-row">
+          <div class="flex-item flex-column">
+            <p class="text add-top-margin">
+            <font size="+3"> <strong>
+                Upload a new vulnerability</strong></font> 
+            </font>  
+            </p>
+          </div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item flex-column">
+
+            <h3>Estimated parameters of the chosen vulnerability</h3>
+            <table>
+               <tr align="left">
+                  <th>Vulnerability ID</th>
+                  <th>t<sub>disco</sub></th>
+                  <th>t<sub>dev</sub></th>
+                  <th>c<sub>dev</sub></th>
+                  <th>r<sub>disclose</sub></th>
+               </tr>
+               <tr > 
+                  <td><input type="text" name="VID" value=""></td>
+                  <td><input type="text" name="tdisco" value=""></td>
+                  <td><input type="text" name="tdev" value=""></td>
+                  <td><input type="text" name="cdev" value=""></td>
+                  <td><input type="text" name="rdisclose" value=""></td>
+               </tr>
+
+            </table>
+            <br>
+            <!-- <h3>Submit your comments on the uploaded vulnerability</h3>
+            <form action="/html/tags/html_form_tag_action.cfm" method="post">
+              <div>
+              <textarea rows="4" cols="50" name="comments" id="comments_submit" style="font-family:sans-serif;font-size:1.2em;">
+              </textarea>
+              </div>
+              
+            </form> -->
+            <font size="+2"> <strong>
+              Upload your comments</strong></font> 
+            </font> 
+            
+            <a href="https://twitter.com/intent/tweet?button_hashtag=&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-size="large" data-text="Your comments about this zero-day vulnerability" data-url="https://twitter.com/hashtag/cve201815982?lang=en" data-related="SofiaITC,CGuerrillAneXus" data-lang="en" data-dnt="true" data-show-count="true">Tweet #CVE</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <br>
+            <br>
+
+          </div>
+        </div>
+        <button class="button button4" onclick="gotoHomePage()">Submit</button>
+    </div>
+  </div>
+</body>
+
+</html>
