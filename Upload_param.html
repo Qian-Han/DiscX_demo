@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-
 <head>
   <title>Disclose or Exploit? A Game Theoretic Approach to Strategic Decision Making in Cyber Warfare</title>
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
@@ -19,6 +18,8 @@
   <script src="js/widgets.js"></script>
   <script src="js/custom.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Gorditas:700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/style.css">
   <script>
     function gotoHomePage() {
       alert("Thanks for your submission");
@@ -58,17 +59,17 @@
             <table>
                <tr align="left">
                   <th>Vulnerability ID</th>
-                  <th>t<sub>disco</sub></th>
-                  <th>t<sub>dev</sub></th>
-                  <th>c<sub>dev</sub></th>
-                  <th>r<sub>disclose</sub></th>
+                  <th>T<sub>disco</sub></th>
+                  <th>T<sub>dev</sub></th>
+                  <th>C<sub>dev</sub></th>
+                  <th>R<sub>disclose</sub></th>
                </tr>
                <tr > 
                   <td><input type="text" name="VID" value=""></td>
-                  <td><input type="text" name="tdisco" value=""></td>
-                  <td><input type="text" name="tdev" value=""></td>
-                  <td><input type="text" name="cdev" value=""></td>
-                  <td><input type="text" name="rdisclose" value=""></td>
+                  <td><input type="text" name="T_disco" value=""></td>
+                  <td><input type="text" name="T_dev" value=""></td>
+                  <td><input type="text" name="C_dev" value=""></td>
+                  <td><input type="text" name="R_disclose" value=""></td>
                </tr>
 
             </table>
@@ -81,17 +82,33 @@
               </div>
               
             </form> -->
-            <font size="+2"> <strong>
-              Upload your comments</strong></font> 
-            </font> 
+            <!-- <font size="+2"> <strong>
+              Upload your comments to DiscX Board</strong></font> 
+            </font>  -->
             
-            <a href="https://twitter.com/intent/tweet?button_hashtag=&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-size="large" data-text="Your comments about this zero-day vulnerability" data-url="https://twitter.com/hashtag/cve201815982?lang=en" data-related="SofiaITC,CGuerrillAneXus" data-lang="en" data-dnt="true" data-show-count="true">Tweet #CVE</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <body>
+                <header>
+                    <font size="+1"> <strong>Upload your comments to DiscX Board</strong></font> 
+                </header>
+              
+                <section id="main" role="main">
+                  <div id="chat">
+                    <i id="avatar" class="face12"></i><input type="text" id="input" placeholder="Type your comments...">
+                  </div>
+                  <button id="button">Publish your comments</button>
+                  <p id="presence"></p>
+                  <div id="output"></div>
+                </section>
+                <footer></footer>
+                <script src="http://cdn.pubnub.com/pubnub.min.js"></script>
+                <script src="js/app.js"></script>
+                <button class="button button4" onclick="gotoHomePage()">Submit</button>
+              </body>
             <br>
             <br>
 
           </div>
         </div>
-        <button class="button button4" onclick="gotoHomePage()">Submit</button>
     </div>
   </div>
 </body>
