@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Disclose or Exploit? A Game Theoretic Approach to Strategic Decision Making in Cyber Warfare</title>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+  <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/frame.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/controls.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/widgets.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/custom.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="js/menu_authentication.js"></script>
+  <script src="js/widgets.js"></script>
+  <script src="js/custom.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jstat/1.7.0/jstat.min.js"></script>
+  <script type="text/javascript"     
+    src="https://www.gstatic.com/charts/loader.js"></script>
+    
+  <script type="text/javascript">
+      var data;
+      var options;
+      let chart;
+
+      google.charts.load("current", { packages: ["corechart"] });
+      google.charts.setOnLoadCallback(prepareChart);
+
+      function prepareChart() {
+        data = new google.visualization.DataTable();
+        setChartOptions();
+        addColumns();
+        addData();
+        drawChart();
+      }
+
+      function setChartOptions() {
+        options = { legend: "none" };
+        options.hAxis = {};
+        options.hAxis.minorGridlines = {};
+        options.hAxis.minorGridlines.count = 5;
+        return options;
+      }
+
+      function addColumns() {
+        data.addColumn("number", "X Value");
+        data.addColumn("number", "Y Value");
+        data.addColumn({ type: "boolean", role: "scope" });
+        data.addColumn({ type: "string", role: "style" });
+      }
+
+      function addData() {
+        mean = parseFloat(document.getElementById("mean").value);
+        stndDev = parseFloat(document.getElementById("stnddev").value);
+        xMin = mean - 5 * stndDev;
+        xMax = mean + 5 * stndDev;
+        xLeft = mean - 0 * stndDev;
+        xRight = mean + 5 * stndDev;
+        data.addRows(createArray(xMin, xMax, xLeft, xRight, mean, stndDev));
+      }
+
+      function createArray(xMin, xMax, xLeft, xRight, mean, stndDev) {
+        let chartData = new Array([]);
+        let index = 0;
+        for (var i = xMin; i <= xMax; i += 0.1) {
+            chartData[index] = new Array(4);
+            chartData[index][0] = i;
+            chartData[index][1] = jStat.normal.pdf(i, mean, stndDev);
+        
+            if (i < xLeft || i > xRight) {
+            chartData[index][2] = false;
+            }
+            chartData[index][3] =
+            "opacity: 1; + color: #8064A2; + stroke-color: black; ";
+        
+            index++;
+        }
+        return chartData;
+      }
+
+      function drawChart() {
+        chart = new google.visualization.AreaChart(
+            document.getElementById("chart_div")
+        );
+        chart.draw(data, options);
+      }  
+  </script>
+    
+  <style>
+        #chart_div{
+        width: 1400px;
+        height: 800px;
+        margin: 0px;
+        }
+  </style>
+
+  <style>
+        .menu-comments {
+          color: rgb(255, 255, 255) !important;
+          opacity: 1 !important;
+          font-weight: 700 !important;
+        }
+        table, th, td {
+                border: 1px solid black;
+             }
+      </style>
+    </head>
+    
+    <body>
+      <div class="menu-container"></div>
+      <div class="content-container">
+            <div class="content">
+              <div class="content-table flex-column">
+                <div class="flex-row">
+                  <div class="flex-item flex-column">
+                    <p class="text add-top-margin">
+
+                        <font size="+3"> <strong>
+                                Probability Distribution Function for T_develop  </strong></font>
+                        </font>
+                        <div id="chart_div"></div>   
+                        
+                        <form action="CVE-2018-15982_param.html" method="GET">
+                            <p style="text-align:center;">
+                            <label class="label_input"><font size="+1">
+                                Mean:</font> 
+                              </font> &nbsp; &nbsp; &nbsp; &nbsp;</label>
+                              <input type="text" id="mean" value="22" class="text_field" name="serialNumber"/>
+                              &nbsp; &nbsp; &nbsp; &nbsp;
+                              <label class="label_input"><font size="+1">
+                                Standard Deviation:   </font> 
+                              </font> &nbsp; &nbsp; &nbsp; &nbsp;</label>
+                              <input type="text" id="stnddev" value="4.4" class="text_field"/>
+                              &nbsp; &nbsp; &nbsp; &nbsp;
+                            <button class="button button4" onclick="">Submit your estimation and return </button>  
+                            </p>  
+                          </form>
+                        <br>
+                        <button class="button button4" onclick="prepareChart()">Redraw your estimation</button>  
+                    </p>
+                  </div>
+                </div>
+                <div class="flex-row">
+                <div class="flex-item flex-column">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+</html>
