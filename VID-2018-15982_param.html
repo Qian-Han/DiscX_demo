@@ -32,7 +32,7 @@
 
       var data = google.visualization.arrayToDataTable([
         ['', 'Base Score', 'Impact Score', 'Exploitability Score'],
-        ['CVE-2018-15982', parseFloat(base_score), parseFloat(impact_score), parseFloat(exploitability_score)],
+        ['VID-2018-15982', parseFloat(base_score), parseFloat(impact_score), parseFloat(exploitability_score)],
       ]);
 
       var options = {
@@ -116,7 +116,7 @@
 
   <script>
     function gotoComments() {
-      option = "CVE-2018-15982"
+      option = "VID-2018-15982"
       window.location.replace(option + "_comments.html");
     }
   </script>
@@ -138,7 +138,7 @@
                 </script>
 
             <font size="+3"> <strong>
-                Real-time estimation on CVE-2018-15982</strong></font> 
+                Real-time estimation on VID-2018-15982</strong></font> 
             </font> 
             <br><br>
             <font size="+1"> <strong>
@@ -166,11 +166,11 @@
               </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="impact_score" value="5.9" class="text_field"/></p>
             <p><label class="label_input"><font size="-1">
                 Exploitability Score: </font> 
-              </font>   &nbsp;</label><input type="text" id="exploitability_score" value="3.9" class="text_field"/></p>
+              </font>   &hairsp; &hairsp; </label><input type="text" id="exploitability_score" value="3.9" class="text_field"/></p>
             <button class="button button4" onclick="drawChart()">Submit your prediction</button>
             <br><br><br>
             <p class="text add-top-margin"> <font size="+1"> <center>
-              Life-cycle of CVE-2018-15982 before disclosure  <font>
+              Life-cycle of VID-2018-15982 before disclosure  <font>
               <br><br>
 
             <div id="timeline" style="height: 260px;"></div>
