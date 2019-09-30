@@ -55,7 +55,7 @@
         <div class="flex-row">
           <div class="flex-item flex-column">
 
-            <h3>Estimated parameters of the chosen vulnerability</h3>
+            <h2>Estimated parameters of the chosen vulnerability</h2>
             <table>
                <tr align="left">
                   <th>Vulnerability ID</th>
@@ -71,21 +71,42 @@
                   <td><input type="text" name="C_dev" value=""></td>
                   <td><input type="text" name="R_disclose" value=""></td>
                </tr>
+              </table>
+
+              <br>
+            <table>
+              <tr align="left">
+                <th>T_create length</th>
+                <th>T_discover length</th>
+                <th>T_develop length</th>
+                <th>T_exploit length</th>
+                <th>T_disclose length</th>
+             </tr>
+             <tr > 
+                <td><input type="text" name="T_create_length" value=""></td>
+                <td><input type="text" name="T_discover_length" value=""></td>
+                <td><input type="text" name="T_develop_length" value=""></td>
+                <td><input type="text" name="T_exploit_length" value=""></td>
+                <td><input type="text" name="T_disclose_length" value=""></td>
+             </tr>
 
             </table>
             <br>
-            <!-- <h3>Submit your comments on the uploaded vulnerability</h3>
-            <form action="/html/tags/html_form_tag_action.cfm" method="post">
-              <div>
-              <textarea rows="4" cols="50" name="comments" id="comments_submit" style="font-family:sans-serif;font-size:1.2em;">
-              </textarea>
-              </div>
-              
-            </form> -->
-            <!-- <font size="+2"> <strong>
-              Upload your comments to DiscX Board</strong></font> 
-            </font>  -->
-            
+            <table>
+               <tr align="left">
+                <th>Base Score</th>
+                <th>Impact Score</th>
+                <th>Exploitability Score</th>
+                
+               </tr>
+               <tr > 
+                <td><input type="text" name="Base_Score" value=""></td>
+                <td><input type="text" name="Impact_Score" value=""></td>
+                <td><input type="text" name="Exploitability_Score" value=""></td>
+               </tr>
+              </table>
+            <br>
+
             <body>
                 <header>
                     <font size="+1"> <strong>Upload your comments to DiscXBoard</strong></font> 
