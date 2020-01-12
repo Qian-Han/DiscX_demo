@@ -20,6 +20,10 @@
   <script src="js/custom.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <!-- For calendar picker -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   
   <script type="text/javascript">
     google.charts.load('current', {'packages':['bar']});
@@ -57,15 +61,18 @@
       var chart = new google.visualization.Timeline(container);
       var dataTable = new google.visualization.DataTable();
 
-      var t_create_length = parseInt(document.getElementById("t_create_length").value);
+      // var t_create_length = parseInt(document.getElementById("t_create_length").value);
       var t_discover_length = parseInt(document.getElementById("t_discover_length").value);
       var t_develop_length = parseInt(document.getElementById("t_develop_length").value);
       var t_exploit_length = parseInt(document.getElementById("t_exploit_length").value);
       var t_disclose_length = parseInt(document.getElementById("t_disclose_length").value);
       
-      var date_create = new Date(2018, 7, 27);
-      var date_create_end = date_create.addDays(t_create_length);
-      var date_discover = date_create_end.addDays(1);
+      // var date_create = new Date(2018, 7, 27);
+      // var date_create_end = date_create.addDays(t_create_length);
+      // var date_discover = date_create_end.addDays(1);
+      // var date_discover_end = date_discover.addDays(t_discover_length);
+      // var date_discover = new Date(2018, 7, 27);
+      var date_discover = new Date(document.getElementById("datepicker").value);
       var date_discover_end = date_discover.addDays(t_discover_length);
       var date_develop = date_discover_end.addDays(1);
       var date_develop_end = date_develop.addDays(t_develop_length);
@@ -78,7 +85,7 @@
       dataTable.addColumn({ type: 'date', id: 'Start' });
       dataTable.addColumn({ type: 'date', id: 'End' });
       dataTable.addRows([
-        [ 'T_create', date_create, date_create_end],
+        // [ 'T_create', date_create, date_create_end],
         [ 'T_discover', date_discover,  date_discover_end ],
         [ 'T_develop',  date_develop,  date_develop_end ], 
         [ 'T_exploit',  date_exploit,  date_exploit_end ], 
@@ -153,7 +160,7 @@
           <div class="flex-item flex-column">
 
             <p class="text add-top-margin"> <font size="+1"> <center>
-              Predicted CVSS Severity Score and Metrics  <font>
+              Input Estimated Severity Score and Metrics  <font>
                 <br><br>
 
             <div id="barchart_material" style="width: 800px; height: 150px;"></div>
@@ -167,7 +174,7 @@
             <p><label class="label_input"><font size="-1">
                 Exploitability Score: </font> 
               </font>   &hairsp; &hairsp; </label><input type="text" id="exploitability_score" value="3.9" class="text_field"/></p>
-            <button class="button button4" onclick="drawChart()">Submit your prediction</button>
+            <button class="button button4" onclick="drawChart()">Submit your input</button>
             <br><br><br>
             <p class="text add-top-margin"> <font size="+1"> <center>
               Life-cycle of VID-2018-15982 before disclosure  <font>
@@ -177,8 +184,8 @@
             <div id="timeline" style="width: 800px;"></div>
 
             <p align="left">
-                <a href="t_crt.html" target="popup"><b>T_create</b></a>: The creation time of a vulnerability is the release time of either the hardware/software in which the vulnerability exists.
-                <br><br>
+                <!-- <a href="t_crt.html" target="popup"><b>T_create</b></a>: The creation time of a vulnerability is the release time of either the hardware/software in which the vulnerability exists.
+                <br><br> -->
                 <a href="t_discover.html" target="popup"><b>T_discover</b></a>: This is the amount of time (after T_create) when white/black hat hackers become aware of the vulnerability.
                 <br><br>
                 <a href="t_dev.html" target="popup"><b>T_develop</b></a>: This is the amount of time (after T_discover) needed to build an exploit based on this vulnerability.
@@ -190,13 +197,29 @@
             </p>
 
             <p align="left">
-              <p ><label class="label_input"><font size="-1">
+              <!-- <p ><label class="label_input"><font size="-1">
                   T_create length: </font> 
                 </font>   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
-                <input type="text" id="t_create_length" value="31" class="text_field"/></p> 
+                <input type="text" id="t_create_length" value="31" class="text_field"/></p>  -->
+
+            <!-- For calendar picker -->
+              <script>
+                $(function() {
+                  $( "#datepicker" ).datepicker();
+                  //selecting the button and adding a click event
+                  $("#alert").click(function() {
+                    //alerting the value inside the textbox
+                    var date = $("#datepicker").datepicker("getDate");
+                    alert("You picked " + $.datepicker.formatDate("mm-dd-yy", date) + " as the date of the vulnerability's discovery");
+                  });
+                });
+                </script>
+                <p><label class="label_input"><font size="-1">
+                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Date of discovery: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</font> 
+                  <input type="text" id="datepicker" name="discover_date" value="08/27/2018"/> <button id="alert">Confirm</button> </p>
               <p><label class="label_input"><font size="-1">
                   T_discover length: </font> 
-                </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="t_discover_length" value="140" class="text_field"/></p>
+                </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="t_discover_length" value="140" class="text_field"/></p>
               <p><label class="label_input"><font size="-1">
                   T_develop length: </font> 
                 </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="t_develop_length" value="22" class="text_field"/></p>
@@ -208,7 +231,7 @@
                 </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="t_disclose_length" value="1" class="text_field"/></p>
             </p>
             <br>
-            <button class="button button4" onclick="drawChart_timeline()">Submit your prediction</button>
+            <button class="button button4" onclick="drawChart_timeline()">Submit your input</button>
             <br><br><br>
           </div>
         </div>

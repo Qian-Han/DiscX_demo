@@ -1,0 +1,12 @@
+DiscX Demo Updates:
+
+Done:
+Change "prediction" -> "input"
+Remove the name of "CVSS"
+remove t_create
+The result page can be a graphic instead of the form
+set up a calendar and choose the date
+
+TODO:
+Show the algorithm
+Simplize the parameter's notation
