@@ -8,5 +8,7 @@ The result page can be a graphic instead of the form
 set up a calendar and choose the date
 
 TODO:
-Show the algorithm
+Change the workflow of the Demo
+Implement the sketch of two player's model 
 Simplize the parameter's notation
+Find CVE examples exploited before disclosure

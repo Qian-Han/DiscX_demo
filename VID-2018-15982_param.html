@@ -24,6 +24,10 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   
   <script type="text/javascript">
     google.charts.load('current', {'packages':['bar']});
@@ -86,10 +90,10 @@
       dataTable.addColumn({ type: 'date', id: 'End' });
       dataTable.addRows([
         // [ 'T_create', date_create, date_create_end],
-        [ 'T_discover', date_discover,  date_discover_end ],
-        [ 'T_develop',  date_develop,  date_develop_end ], 
-        [ 'T_exploit',  date_exploit,  date_exploit_end ], 
-        [ 'T_disclose',  date_disclose,  date_disclose_end ]]);
+        [ 'Time of discovery', date_discover,  date_discover_end ],
+        [ 'Time of development',  date_develop,  date_develop_end ], 
+        [ 'Time of exploitation',  date_exploit,  date_exploit_end ], 
+        [ 'Time of disclosure',  date_disclose,  date_disclose_end ]]);
 
       chart.draw(dataTable);
     }
@@ -108,6 +112,13 @@
         return parseInt(l);
     }
 
+    function cost_calculate(){
+      var num_senior = document.getElementById('num_senior').value;
+      var num_junior = document.getElementById('num_junior').value; 
+      var len_senior = document.getElementById('len_senior').value;
+      var len_junior = document.getElementById('len_junior').value; 
+      document.getElementById('cost').value = 5000 * parseInt(num_senior)*parseInt(len_senior) + 3000 * parseInt(num_junior)*parseInt(num_junior);
+    }
   </script>
 
   <style>
@@ -126,6 +137,43 @@
       option = "VID-2018-15982"
       window.location.replace(option + "_comments.html");
     }
+  </script>
+
+  <script>
+    function getMultipleSelectedValue()
+    {
+      var x=document.getElementById("cve_list");
+      var str = ''; 
+      for (var i = 0; i < x.options.length; i++) {
+          if(x.options[i].selected == true){
+              alert(x.options[i].value + " choosed!");
+              str = str.concat(x.options[i].value, '\xa0\xa0\xa0');
+            }
+        }
+      document.getElementById("cve_1").innerHTML = str.concat('choosed') ;
+    }
+  </script>
+
+  <script>
+    $( function() {
+      $( "#slider-range" ).slider({
+        range: true,
+        min: 0,
+        max: 100,
+        values: [ 60, 80 ],
+        slide: function( event, ui ) {
+          $( "#amount" ).val(ui.values[ 0 ] + '%' + " - " + ui.values[ 1 ] + '%');
+        }
+      });
+      $( "#amount" ).val( $( "#slider-range" ).slider( "values", 0 ) + '%' + 
+        " - " + $( "#slider-range" ).slider( "values", 1 ) + '%');
+    } );
+  </script>
+
+  <script>
+
+
+    
   </script>
   
 </head>
@@ -166,13 +214,13 @@
             <div id="barchart_material" style="width: 800px; height: 150px;"></div>
             
             <p ><label class="label_input"><font size="-1">
-                Base Score: </font> 
+                What's your estimation for the Base Score? </font> 
               </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="base_score" value="9.8" class="text_field"/></p> 
             <p><label class="label_input"><font size="-1">
-                Impact Score: </font> 
+                What's your estimation for the Impact Score: </font> 
               </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="impact_score" value="5.9" class="text_field"/></p>
             <p><label class="label_input"><font size="-1">
-                Exploitability Score: </font> 
+                What's your estimation for the Exploitability Score: </font> 
               </font>   &hairsp; &hairsp; </label><input type="text" id="exploitability_score" value="3.9" class="text_field"/></p>
             <button class="button button4" onclick="drawChart()">Submit your input</button>
             <br><br><br>
@@ -186,13 +234,13 @@
             <p align="left">
                 <!-- <a href="t_crt.html" target="popup"><b>T_create</b></a>: The creation time of a vulnerability is the release time of either the hardware/software in which the vulnerability exists.
                 <br><br> -->
-                <a href="t_discover.html" target="popup"><b>T_discover</b></a>: This is the amount of time (after T_create) when white/black hat hackers become aware of the vulnerability.
+                <a href="t_discover.html" target="popup"><b>Time of discovery</b></a>: This is the amount of time (after Time of creation) when white/black hat hackers become aware of the vulnerability.
                 <br><br>
-                <a href="t_dev.html" target="popup"><b>T_develop</b></a>: This is the amount of time (after T_discover) needed to build an exploit based on this vulnerability.
+                <a href="t_dev.html" target="popup"><b>Time of development</b></a>: This is the amount of time (after Time of discovery) needed to build an exploit based on this vulnerability.
                 <br><br>
-                <a href="t_exp.html" target="popup"><b>T_exploit</b></a>: This is the amount of time (after T_develop) for which the exploit developer operates/uses the exploit.
+                <a href="t_exp.html" target="popup"><b>Time of exploitation</b></a>: This is the amount of time (after Time of development) for which the exploit developer operates/uses the exploit.
                 <br><br>
-                <a href="t_disclose.html" target="popup"><b>T_disclose</b></a>: This is the time when the existence of the vulnerability is publicly disclosed (e.g. through the National Vulnerability Database).
+                <a href="t_disclose.html" target="popup"><b>Time of disclosure</b></a>: This is the time when the existence of the vulnerability is publicly disclosed (e.g. through the National Vulnerability Database).
                 <br><br>
             </p>
 
@@ -215,24 +263,69 @@
                 });
                 </script>
                 <p><label class="label_input"><font size="-1">
-                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Date of discovery: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</font> 
+                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; When do you think the vulnerability is discovered? &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</font> 
                   <input type="text" id="datepicker" name="discover_date" value="08/27/2018"/> <button id="alert">Confirm</button> </p>
               <p><label class="label_input"><font size="-1">
-                  T_discover length: </font> 
+                  How long do you think the attacker needs to discover the vulnerability? </font> 
                 </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="t_discover_length" value="140" class="text_field"/></p>
               <p><label class="label_input"><font size="-1">
-                  T_develop length: </font> 
+                  How long do you think the attacker needs to develop the vulnerability?</font> 
                 </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="t_develop_length" value="22" class="text_field"/></p>
               <p><label class="label_input"><font size="-1">
-                  T_exploit length: </font> 
+                  How long do you think the attacker needs to exploit the vulnerability?</font> 
                 </font>   &hairsp; &hairsp; &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="t_exploit_length" value="6" class="text_field"/></p>
               <p><label class="label_input"><font size="-1">
-                  T_disclose length: </font> 
+                  How long do you think the attacker needs to disclose the vulnerability?</font> 
                 </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="t_disclose_length" value="1" class="text_field"/></p>
+              
+              <p><label class="label_input"><font size="-1">
+                How many senior engineers do you think we need to exploit the vulnerability?</font> 
+              </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="num_senior" value="3" class="text_field"/></p>
+              <p><label class="label_input"><font size="-1">
+                How many junior engineers do you think we need to exploit the vulnerability?</font> 
+              </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="num_junior" value="3" class="text_field"/></p>
+              <p><label class="label_input"><font size="-1">
+                How many weeks ($5,000/week/person) do you think the senior engineers will work on the exploitation?</font> 
+              </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="len_senior" value="2" class="text_field"/></p>
+              <p><label class="label_input"><font size="-1">
+                How many weeks ($3,000/week/person) do you think the junior engineers will work on the exploitation?</font> 
+              </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="len_junior" value="3" class="text_field"/></p>
+
+              <p><label class="label_input"><font size="-1">
+                Total estimated cost (USD): </font> 
+              </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="cost" value="57000" class="text_field"/> <button id="cost_calculate" onclick="cost_calculate()">Calculate</button> 
+              <p><label class="label_input"><font size="-1">
+                Total estimated reward (USD):</font> 
+              </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="reward" value="100000" class="text_field"/></p>
+
             </p>
             <br>
             <button class="button button4" onclick="drawChart_timeline()">Submit your input</button>
-            <br><br><br>
+            <br><br>
+
+            <center><h2>Please choose two vulnerabilities you have the best knowledge</h2> </center> <br>
+            <div align="center">
+              <select multiple="multiple" id="cve_list">
+                <option value="CVE-2019-0708">CVE-2019-0708 (BlueKeep)</option>
+                <option value="CVE-2018-8373">CVE-2018-8373 (Scripting Engine Memory Corruption)</option>
+                <option value="CVE-2018-8174">CVE-2018-8174 (Double Kill)</option>
+                <option value="CVE-2017-11882">CVE-2017-11882 (17-Year Old MS Office Flaw)</option>
+                <option value="CVE-2017-8750">CVE-2017-8750 (PowerPoint Malware Attack)</option>
+                <option value="CVE-2017-0199">CVE-2017-0199 (Spear Phishing Fileless Attack)</option>
+                <option value="CVE-2017-0144">CVE-2017-0144 (EternalBlue)</option>
+                <option value="CVE-2015-1805">CVE-2015-1805 (Google Android Kernel privilege escalation)</option>
+                <option value="CVE-2014-6271">CVE-2014-6271 (Shellshock)</option>
+                <option value="CVE-2014-0160">CVE-2014-0160 (Heartbleed)</option>
+              </select>
+              <input class="button button4" type="button" value="Submit" onclick="getMultipleSelectedValue()" style="font-size:18px;"/>
+            </div>
+            <p id="cve_1"></p> 
+             <p>
+              <label for="amount">Cost estimation between choosed two vulnerabilities:</label>
+              <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+            </p>
+            <div id="slider-range"></div><br><br>
+
           </div>
         </div>
         <button class="button button4" onclick="gotoComments()">Go to Comments Page</button>

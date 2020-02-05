@@ -3,22 +3,22 @@ var data5 = [
   {
     type: "indicator",
     mode: "number+gauge+delta",
-    value: 180,
-    delta: { reference: 100 },
+    value: 0.75,
+    delta: { reference: 0.2 },
     domain: { x: [0.25, 1], y: [0.05, 0.25] },
-    title: { text: "Reward (in thousands $)" },
+    title: { text: "Relative Reward"}, 
     gauge: {
       shape: "bullet",
-      axis: { range: [null, 300] },
+      axis: { range: [null, 1] },
       threshold: {
-        line: { color: "black", width: 2 },
-        thickness: 0,
-        value: 170
+        line: { color: "red", width: 2 },
+        thickness: 3,
+        value: 0.75
       },
       steps: [
-        { range: [0, 150], color: "gray" },
+        { range: [0, 0.5], color: "gray" },
         {
-          range: [150, 250],
+          range: [0.5, 1],
           color: "lightgray"
         }
       ],
@@ -28,21 +28,21 @@ var data5 = [
   {
     type: "indicator",
     mode: "number+gauge+delta",
-    value: 35,
-    delta: { reference: 50 },
+    value: 0.35,
+    delta: { reference: 0.2 },
     domain: { x: [0.25, 1], y: [0.4, 0.6] },
-    title: { text: "Cost (in thousands $)" },
+    title: { text: "Cost" },
     gauge: {
       shape: "bullet",
-      axis: { range: [null, 100] },
+      axis: { range: [null, 1] },
       threshold: {
-        line: { color: "black", width: 2 },
-        thickness: 0,
-        value: 50
+        line: { color: "red", width: 2 },
+        thickness: 2,
+        value: 0.35
       },
       steps: [
-        { range: [0, 25], color: "gray" },
-        { range: [25, 75], color: "lightgray" }
+        { range: [0, 0.25], color: "gray" },
+        { range: [0.25, 1], color: "lightgray" }
       ],
       bar: { color: "#d70000" }
     }
@@ -50,21 +50,21 @@ var data5 = [
   {
     type: "indicator",
     mode: "number+gauge+delta",
-    value: 96,
-    delta: { reference: 50 },
+    value: 0.96,
+    delta: { reference: 0.2 },
     domain: { x: [0.25, 1], y: [0.75, 0.95] },
     title: { text: "Exploit Length" },
     gauge: {
       shape: "bullet",
-      axis: { range: [null, 300] },
+      axis: { range: [null, 1] },
       threshold: {
-        line: { color: "black", width: 2 },
-        thickness: 0,
-        value: 210
+        line: { color: "red", width: 2 },
+        thickness: 2,
+        value: 0.96
       },
       steps: [
-        { range: [0, 50], color: "gray" },
-        { range: [50, 150], color: "lightgray" }
+        { range: [0, 0.2], color: "gray" },
+        { range: [0.2, 1], color: "lightgray" }
       ],
       bar: { color: "#ffd700" }
     }

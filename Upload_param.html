@@ -27,6 +27,8 @@
       window.location.replace("index.html");
     }
   </script>
+
+
   <style>
     .menu-widget {
       color: rgb(255, 255, 255) !important;
@@ -56,17 +58,70 @@
         <div class="flex-row">
           <div class="flex-item flex-column">
 
+            <script language = "JavaScript">
+              var caution = false
+              function setCookie(name, value, expires, path, domain, secure) {
+                  var curCookie = name + "=" + escape(value) +
+                      ((expires) ? "; expires=" + expires.toGMTString() : "") +
+                      ((path) ? "; path=" + path : "") +
+                      ((domain) ? "; domain=" + domain : "") +
+                      ((secure) ? "; secure" : "")
+                  if (!caution || (name + "=" + escape(value)).length <= 4000)
+                      document.cookie = curCookie
+                  else if (confirm("Cookie exceeds 4KB and will be cut!"))
+                      document.cookie = curCookie
+              }
+              
+              function getCookie(name) {
+                  var prefix = name + "="
+                  var cookieStartIndex = document.cookie.indexOf(prefix)
+                  if (cookieStartIndex == -1)
+                      return null
+                  var cookieEndIndex = document.cookie.indexOf(";", cookieStartIndex + prefix.length)
+                  if (cookieEndIndex == -1)
+                      cookieEndIndex = document.cookie.length
+                  return unescape(document.cookie.substring(cookieStartIndex + prefix.length,
+                      cookieEndIndex))
+              }
+              
+              function deleteCookie(name, path, domain) {
+                  if (getCookie(name)) {
+                      document.cookie = name + "=" +
+                          ((path) ? "; path=" + path : "") +
+                          ((domain) ? "; domain=" + domain : "") +
+                          "; expires=Thu, 01-Jan-70 00:00:01 GMT"
+                  }
+              }
+              
+              function fixDate(date) {
+                  var base = new Date(0)
+                  var skew = base.getTime()
+                  if (skew > 0)
+                      date.setTime(date.getTime() - skew)
+              }
+              var now = new Date()
+              fixDate(now)
+              now.setTime(now.getTime() + 730 * 24 * 60 * 60 * 1000)
+              var visits = getCookie("counter")
+              if (!visits)
+                  visits = 1
+              else
+                  visits = parseInt(visits) + 1
+              setCookie("counter", visits, now)
+              document.write("<font size=+1 color=black>Register for VID-2018-" + parseInt(15982+visits) + "")
+            </script> 
+            <br><br>
             <h2>Estimated parameters of the chosen vulnerability</h2>
             <table>
                <tr align="left">
-                  <th>Vulnerability ID</th>
-                  <th>T<sub>disco</sub></th>
-                  <th>T<sub>dev</sub></th>
-                  <th>C<sub>dev</sub></th>
-                  <th>R<sub>disclose</sub></th>
+                  <!-- <th>Vulnerability ID</th> -->
+                  <th>Time of discovery</th>
+                  <th>Time of development</th>
+                  <th>Time of exploitation</th>
+                  <th>Time of disclosure</th>
                </tr>
                <tr > 
-                  <td><input type="text" name="VID" value=""></td>
+                  <!-- <td><input type="text" name="VID" value=""></td> -->
                   <td><input type="text" name="T_disco" value=""></td>
                   <td><input type="text" name="T_dev" value=""></td>
                   <td><input type="text" name="C_dev" value=""></td>
@@ -77,18 +132,15 @@
               <br>
             <table>
               <tr align="left">
-                <th>T_create length</th>
-                <th>T_discover length</th>
-                <th>T_develop length</th>
-                <th>T_exploit length</th>
-                <th>T_disclose length</th>
+                <th>Cost of development</th>
+                <th>Reward of disclosure</th>
              </tr>
              <tr > 
                 <td><input type="text" name="T_create_length" value=""></td>
                 <td><input type="text" name="T_discover_length" value=""></td>
-                <td><input type="text" name="T_develop_length" value=""></td>
+                <!-- <td><input type="text" name="T_develop_length" value=""></td>
                 <td><input type="text" name="T_exploit_length" value=""></td>
-                <td><input type="text" name="T_disclose_length" value=""></td>
+                <td><input type="text" name="T_disclose_length" value=""></td> -->
              </tr>
 
             </table>
@@ -133,6 +185,6 @@
         </div>
     </div>
   </div>
-</body>
 
+</body>
 </html>
