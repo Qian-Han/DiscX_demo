@@ -21,6 +21,8 @@
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Gorditas:700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  
     <script>
 		function stateChange(newState) {
 		alert('The system is calculating the best strategy... Please wait for around 5 seconds');
@@ -33,11 +35,40 @@
 		}
 	</script>   
 
-    <script>
-        function gotoStrategy() {
-        stateChange(-1);
-        }
-    </script>
+  <script>
+      function gotoStrategy() {
+      stateChange(-1);
+      }
+  </script>
+
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['bar']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var base_score = document.getElementById("base_score").value;
+    var impact_score = document.getElementById("impact_score").value;
+    var exploitability_score = document.getElementById("exploitability_score").value;
+
+    var data = google.visualization.arrayToDataTable([
+      ['', 'Base Score', 'Impact Score', 'Exploitability Score....'],
+      ['VID-2019-15982', parseFloat(base_score), parseFloat(impact_score), parseFloat(exploitability_score)],
+    ]);
+
+    var options = {
+      chart: {
+        title: '',
+        subtitle: '',
+      },
+      bars: 'horizontal' // Required for Material Bar Charts.
+    };
+
+    var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+
+    chart.draw(data, google.charts.Bar.convertOptions(options));
+  }
+</script>
+
   <style>
     .menu-comments {
       color: rgb(255, 255, 255) !important;
@@ -48,6 +79,9 @@
             border: 1px solid black;
          }
   </style>
+
+
+
 </head>
 
 <body>
@@ -69,11 +103,33 @@
 							<button id="button">Publish your comments</button>
 							<p id="presence"></p>
 							<div id="output"></div>
-						</section>
-						<button class="button button4" onclick="gotoStrategy()">Go to Strategy Page</button>
+            </section>
+            
+            <p class="text add-top-margin"> <font size="+1"> <center>
+              Input Estimated Severity Score and Metrics  <font>
+                <br><br>
+
+            <div id="barchart_material" style="width: 800px; height: 150px;"></div>
+            
+            <p ><label class="label_input"><font size="-1">
+                What's your estimation for the Base Score? </font> 
+              </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="base_score" value="9.8" class="text_field"/></p> 
+            <p><label class="label_input"><font size="-1">
+                What's your estimation for the Impact Score: </font> 
+              </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="impact_score" value="5.9" class="text_field"/></p>
+            <p><label class="label_input"><font size="-1">
+                What's your estimation for the Exploitability Score: </font> 
+              </font>   &hairsp; &hairsp; </label><input type="text" id="exploitability_score" value="3.9" class="text_field"/></p>
+            <button class="button button2" onclick="drawChart()">Submit your input</button>
+            <br><br><br>
+
+
+						<button class="button button1" onclick="gotoStrategy()">Go to Strategy Page</button>
 						<footer></footer>
 						<script src="http://cdn.pubnub.com/pubnub.min.js"></script>
-						<script src="js/app.js"></script>
+            <script src="js/app.js"></script>
+            
+
 						
 					</body>
 				</div>
