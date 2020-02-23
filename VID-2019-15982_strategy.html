@@ -22,6 +22,68 @@
   <script src="js/custom.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['timeline']});
+    google.charts.setOnLoadCallback(drawChart_timeline);
+    function drawChart_timeline() {
+      var container = document.getElementById('timeline');
+      var chart = new google.visualization.Timeline(container);
+      var dataTable = new google.visualization.DataTable();
+
+      var t_discover_length = parseInt(document.getElementById("t_discover_length").value);
+      var t_develop_length = parseInt(document.getElementById("t_develop_length").value);
+      var t_exploit_length = parseInt(document.getElementById("t_exploit_length").value);
+      var t_disclose_length = parseInt(document.getElementById("t_disclose_length").value);
+
+      var date_discover = new Date('08/28/2019');
+      var date_discover_end = date_discover.addDays(t_discover_length);
+      var date_develop = date_discover_end.addDays(1);
+      var date_develop_end = date_develop.addDays(t_develop_length);
+      var date_exploit = date_develop_end.addDays(1);
+      var date_exploit_end = date_exploit.addDays(t_exploit_length);
+      var date_disclose = date_exploit_end.addDays(1);
+      var date_disclose_end = date_disclose.addDays(t_disclose_length);
+
+      dataTable.addColumn({ type: 'string', id: 'President' });
+      dataTable.addColumn({ type: 'date', id: 'Start' });
+      dataTable.addColumn({ type: 'date', id: 'End' });
+      dataTable.addRows([
+        
+        [ 'Time of discovery', date_discover,  date_discover_end ],
+        [ 'Time of development',  date_develop,  date_develop_end ], 
+        [ 'Time of exploitation',  date_exploit,  date_exploit_end ], 
+        [ 'Time of disclosure',  date_disclose,  date_disclose_end ]]);
+
+      chart.draw(dataTable);
+    }
+
+    Date.prototype.addDays = function(days) {
+        var date = new Date(this.valueOf());
+        date.setDate(date.getDate() + days);
+        return date;
+      }
+
+    function processForm() {
+        var parameters = location.search.substring(1).split("&");
+        var temp = parameters[0].split("=");
+        l = unescape(temp[1]);
+        document.getElementById("data").innerHTML = l;
+        return parseInt(l);
+    }
+  </script>
+
+  <style>
+    .menu-widget {
+      color: rgb(255, 255, 255) !important;
+      opacity: 1 !important;
+      font-weight: 700 !important;
+    }
+    table, th, td {
+            border: 1px solid black;
+         }
+  </style>
 
   <script>
     function gotoHomePage() {
@@ -51,10 +113,24 @@
         <div class="flex-row">
           <div class="flex-item flex-column">
             <p class="text add-top-margin">
-              <font size="+3"> <strong>
+
+
+              <p class="text add-top-margin"> <font size="+2"> <Strong><center>
+                Estimated Own Model: Life-cycle of VID-2019-15982 </Strong><font>
+                <br><br>
+
+              <div id="timeline" style="height: 260px;"></div>
+              <div id="timeline" style="width: 800px;"></div>
+              
+              <a title="Time Length to Discover the Vulnerability">Time Length to <Strong>Discover</Strong>:</a> &nbsp; &nbsp; &nbsp; &nbsp; <input type="textbox" id="t_discover_length" value="80" class="text_field"/><br>
+              <a title="Time Length to Develop the Vulnerability">Time Length to <Strong>Develop</Strong>:</a> &nbsp; &nbsp; &nbsp; &nbsp; &hairsp; <input type="textbox" id="t_develop_length" value="25" class="text_field"/> <br>
+              <a title="Time Length to Exploit the Vulnerability">Time Length to <Strong>Exploit</Strong>:</a> &nbsp; &nbsp; &nbsp; &nbsp; &hairsp; &hairsp; &hairsp; <input type="textbox" id="t_exploit_length" value="96" class="text_field"/> <br>
+              <a title="Time Length to Disclose the Vulnerability">Time Length to <Strong>Disclose</Strong>:</a> &nbsp; &nbsp; &nbsp; &nbsp; &hairsp; <input type="textbox" id="t_disclose_length" value="1" class="text_field"/> <br><br><br>
+
+              <font size="+2"> <strong>
                   Real-time Exploitation and Disclosure Strategy Suggestion </strong></font>
               </font>
-              <!-- <h2>Details of Suggested Strategy</h2> -->
+              
             </p>
           </div>
         </div>
@@ -67,12 +143,12 @@
       <p align="center">
           <table align="center">
             <tr align="center">
-              <th>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Vulnerability ID &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-                &nbsp &nbsp </th>
-              <th>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Action &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-                &nbsp </sub></th>
-              <th>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Strategy &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-                &nbsp </th>
+              <th>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Vulnerability ID &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; </th>
+              <th>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Action &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; </sub></th>
+              <th>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Strategy &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; </th>
             </tr>
             <tr align="center">
               <td>VID-2019-15982</td>
@@ -99,7 +175,7 @@
           <div id="myDiv5"></div>
           <script src="js/strategy_page.js"></script>
           <br>
-          <button class="button button1" onclick="gotoHomePage()"> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  Go to Home Page &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </button>
+          <button class="button button1" onclick="gotoHomePage()"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Go to Home Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </button>
         </p>
     </div>
   </div>

@@ -225,7 +225,7 @@
             <button class="button button4" onclick="drawChart()">Submit your input</button>
             <br><br><br> -->
             <p class="text add-top-margin"> <font size="+1"> <center>
-              Estimated Attacker's Model: Life-cycle of VID-2019-15982 before disclosure  <font>
+              Estimated Opponent's Model: Life-cycle of VID-2019-15982 before disclosure  <font>
               <br><br>
 
             <div id="timeline" style="height: 260px;"></div>
@@ -262,23 +262,33 @@
                   });
                 });
                 </script>
-                <p><label class="label_input"><font size="-1">
+                <a title="When do you think the vulnerability is discovered?">Discovery Date</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input type="text" id="datepicker" name="discover_date" value="08/27/2019"/> <button id="alert">Confirm</button> <br><br>
+                <a title="How long do you think the opponent needs to discover the vulnerability?">Time to Discover</a> &nbsp; &nbsp; &nbsp; &nbsp; <input type="text" id="t_discover_length" value="140" class="text_field"/><br><br>
+                <a title="How long do you think the opponent needs to develop the vulnerability?">Time to Develop</a> &nbsp; &nbsp; &nbsp; &nbsp; &hairsp; <input type="text" id="t_develop_length" value="22" class="text_field"/> <br><br>
+                <a title="How long do you think the opponent needs to exploit the vulnerability?">Time to Exploit</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input type="text" id="t_exploit_length" value="6" class="text_field"/> <br><br>
+                <a title="How long do you think the opponent needs to disclose the vulnerability?">Time to Disclose</a> &nbsp; &nbsp; &nbsp; &nbsp; &hairsp; <input type="text" id="t_disclose_length" value="1" class="text_field"/> <br><br>
+                <a title="How many senior engineers do you think we need to exploit the vulnerability?">Number of Senior Engineers Needed</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input type="text" id="num_senior" value="3" class="text_field"/> <br><br>
+                <a title="How many junior engineers do you think we need to exploit the vulnerability?">Number of Junior Engineers Needed</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input type="text" id="num_junior" value="3" class="text_field"/> <br><br>
+                <a title="How many weeks do you think the senior engineers will work on the exploitation?">Length of work time: Senior Engineers </a> &nbsp; &nbsp; &nbsp; &nbsp; <input type="text" id="len_senior" value="2" class="text_field"/> <br><br>
+                <a title="How many weeks do you think the junior engineers will work on the exploitation?">Length of work time: Junior Engineers</a> &nbsp; &nbsp; &nbsp; &nbsp; <input type="text" id="len_junior" value="3" class="text_field"/> <br><br>
+                
+                <!-- <p><label class="label_input"><font size="-1">
                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; When do you think the vulnerability is discovered? &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</font> 
                   <input type="text" id="datepicker" name="discover_date" value="08/27/2019"/> <button id="alert">Confirm</button> </p>
               <p><label class="label_input"><font size="-1">
-                  How long do you think the attacker needs to discover the vulnerability? </font> 
+                  How long do you think the opponent needs to discover the vulnerability? </font> 
                 </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="t_discover_length" value="140" class="text_field"/></p>
               <p><label class="label_input"><font size="-1">
-                  How long do you think the attacker needs to develop the vulnerability?</font> 
+                  How long do you think the opponent needs to develop the vulnerability?</font> 
                 </font>   &hairsp; &hairsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="t_develop_length" value="22" class="text_field"/></p>
               <p><label class="label_input"><font size="-1">
-                  How long do you think the attacker needs to exploit the vulnerability?</font> 
+                  How long do you think the opponent needs to exploit the vulnerability?</font> 
                 </font>   &hairsp;  &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="t_exploit_length" value="6" class="text_field"/></p>
               <p><label class="label_input"><font size="-1">
-                  How long do you think the attacker needs to disclose the vulnerability?</font> 
-                </font>   &hairsp;&hairsp;&hairsp;&hairsp;&hairsp;&hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="t_disclose_length" value="1" class="text_field"/></p>
+                  How long do you think the opponent needs to disclose the vulnerability?</font> 
+                </font>   &hairsp;&hairsp;&hairsp;&hairsp;&hairsp;&hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="t_disclose_length" value="1" class="text_field"/></p> -->
               
-              <p><label class="label_input"><font size="-1">
+              <!-- <p><label class="label_input"><font size="-1">
                 How many senior engineers do you think we need to exploit the vulnerability?</font> 
               </font>   &hairsp; &hairsp; &hairsp; &nbsp; &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="num_senior" value="3" class="text_field"/></p>
               <p><label class="label_input"><font size="-1">
@@ -289,7 +299,7 @@
               </font>   &hairsp; &hairsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="len_senior" value="2" class="text_field"/></p>
               <p><label class="label_input"><font size="-1">
                 How many weeks do you think the junior engineers will work on the exploitation?</font> 
-              </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="len_junior" value="3" class="text_field"/></p>
+              </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="len_junior" value="3" class="text_field"/></p> -->
 
               <!-- <p><label class="label_input"><font size="-1">
                 Total estimated cost (USD): </font> 
@@ -299,7 +309,6 @@
               </font>   &hairsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text" id="reward" value="100000" class="text_field"/></p> -->
 
             </p>
-            
             <button class="button button2" onclick="drawChart_timeline()">Submit your input</button>
             <br><br>
 
@@ -321,14 +330,13 @@
             </div>
             <p id="cve_1"></p> 
              <p>
-              <label for="amount">Cost estimation between selected two vulnerabilities:</label>
+              <label for="amount">Vulnerbility Development Cost Estimation Between Selected Vulnerabilities:</label>
               <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
             </p>
             <div id="slider-range"></div><br><br>
-
           </div>
         </div>
-        <button class="button button1" onclick="gotoComments()">Go to Comments Page</button>
+        <center><button class="button button1" onclick="gotoComments()">Go to Comments Page</button></center>
     </div>
   </div>
 </body>
